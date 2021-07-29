@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 //Basically Singleton. When App starts Spring creates an instance and keeps(registers) it in memory
 //Dependency Injection: Other classes (Controller, service, etc.) which depends on this.
@@ -47,10 +48,12 @@ public class TopicService {
     }
 
 
-    /*public Topic getTopic(String id)
+    public Optional<Topic> getTopic(String id)
     {
-        return topics.stream().filter(topic -> topic.getId().equals(id)).findFirst().get();
-    }*/
+        Optional<Topic> topic = topicRepository.findById(id);
+        return topic;
+        // PREVIOUSLY: return topics.stream().filter(topic -> topic.getId().equals(id)).findFirst().get();
+    }
 
 
     public void addTopic(Topic topic)

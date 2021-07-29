@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TopicController {
@@ -24,9 +25,9 @@ public class TopicController {
     }
 
 
-    //PathVariable takes variable: foo from path: topics/foo and passes it to parameter: id
-    @RequestMapping("/topics/{foo}")
-    public Topic getTopic(@PathVariable String id)
+    //PathVariable takes variable: id from path: topics/id and passes it to parameter: id
+    @RequestMapping("/topics/{id}")
+    public Optional<Topic> getTopic(@PathVariable String id)
     {
         return topicService.getTopic(id);
     }
@@ -39,17 +40,17 @@ public class TopicController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
+    /*@RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
     public void updateTopic(@RequestBody Topic topic, @PathVariable String id)
     {
         topicService.updateTopic(topic, id);
-    }
+    }*/
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
+    /*@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
     public void deleteTopic(@PathVariable String id)
     {
         topicService.deleteTopic(id);
-    }
+    }*/
 
 }
