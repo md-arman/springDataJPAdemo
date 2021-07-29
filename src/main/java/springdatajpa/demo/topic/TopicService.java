@@ -70,10 +70,9 @@ public class TopicService {
         topicRepository.save(topic);
     }
 
-    /*public void deleteTopic(String id)
+    public void deleteTopic(String id)
     {
-        //Topic t = topics.stream().filter(topic -> topic.getId().equals(id)).findFirst().get();
-        //topics.remove(t);
-        topics.removeIf(topic -> topic.getId().equals(id));
-    }*/
+        topicRepository.deleteById(id);
+        //PREVIOUSLY: topics.removeIf(topic -> topic.getId().equals(id));
+    }
 }
